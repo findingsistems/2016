@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "babel-node webpack/webpack-dev-server.js",
     "build": "babel-node node_modules/webpack/bin/webpack.js --config webpack/prod.config.js",
-    "lint": "babel-node node_modules/eslint/bin/eslint.js -c .eslintrc docs/src src",
+    "lint": "babel-node node_modules/eslint/bin/eslint.js -c .eslintrc docs/src src"
   },
   "author": "",
   "license": "MIT",
@@ -18,9 +18,7 @@
     "highlight.js": "^8.8.0",
     "history": "1.12.0",
     "markdown-it": "^4.4.0",
-    "markdown-it-traverse": "git://github.com/monstrs/markdown-it-traverse.git",
     "moment": "^2.10.6",
-    "quantum": "git://github.com/monstrs/quantum.git#integration",
     "ramda": "^0.18.0",
     "react": "^0.14.0",
     "react-addons-create-fragment": "^0.14.0",
