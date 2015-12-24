@@ -1,0 +1,41 @@
+{
+  "extends": "airbnb/base",
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "classes": true,
+    "jsx": true
+  },
+  "rules": {
+    "react/jsx-uses-react": 1,
+    "react/jsx-closing-bracket-location": [1, {"selfClosing": "after-props", "nonEmpty": "after-props"}],
+    "strict": [2, "never"],
+    "indent": [2, 2],
+    "quotes": [2, "single"],
+    "semi": [2, "never"],
+    "no-throw-literal": 2,
+    "max-len": [2, 120, 2],
+    "no-unused-vars": [0, { "args": "none" }],
+    "jsx-quotes": [2, "prefer-single"],
+    "comma-dangle": [2, "always-multiline"],
+    "no-multiple-empty-lines": [2, {"max": 1}],
+    "react/sort-comp": [2, {
+      "order": [
+        "/^[A-Z_]*$/",
+        "lifecycle",
+        "/^get.+$/",
+        "/^on.+$/",
+        "/^handle.+$/",
+        "/^render.+$/",
+        "render"
+      ]
+    }]
+  }
+}
