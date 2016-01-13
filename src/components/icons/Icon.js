@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import style from 'quantum'
-import Color from 'color2'
-import { color } from './../../styles'
+import { colors } from './../../styles'
 
 class Icon extends Component {
   static SIZE = {
@@ -23,12 +22,11 @@ class Icon extends Component {
     ]),
     fill: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.instanceOf(Color),
     ]),
   }
 
   static defaultProps = {
-    fill: color.gray500,
+    fill: colors.gray500,
   }
 
   getSize(width, height, ratio) {

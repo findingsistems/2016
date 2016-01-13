@@ -6,34 +6,34 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 export default {
   entry: {
     'main': [
-      config.entry
-    ]
+      config.entry,
+    ],
   },
   cache: true,
   output: {
     path: config.outputPath,
     filename: 'index.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: [QuantumStylePlugin.loader(), 'babel']},
       {test: /\.json/, loader: 'json'},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')}
-    ]
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')},
+    ],
   },
   resolve: {
     alias: {
-      'scalex-ui': config.aliasScalexUi
+      'scalex-ui': config.aliasScalexUi,
     },
-    extensions: ['', '.json', '.js']
+    extensions: ['', '.json', '.js'],
   },
   quantum: {
     alias: {
       'ScalexUI': config.aliasScalexUi,
-      'ScalexUIDocs': config.aliasScalexUiDocs
+      'ScalexUIDocs': config.aliasScalexUiDocs,
     },
-    theme: config.theme
+    theme: config.theme,
   },
   plugins: [
     new QuantumStylePlugin(),
@@ -42,13 +42,13 @@ export default {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
-  ]
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
 }

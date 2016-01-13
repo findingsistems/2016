@@ -1,52 +1,49 @@
 import React, { Component, PropTypes } from 'react'
-import style from 'quantum'
+import { jss, useSheet } from 'jssStyle'
+
+import * as autoGiperTheme from './../../styles/themes/ag'
+
+const { agTheme, partsTheme, repairsTheme, catalogTheme, fonts } = autoGiperTheme
+
+const componentStyles = {
+  txtAg: agTheme.text,
+}
 
 class Text extends Component {
   static propTypes = {
-    size: PropTypes.string,
+    fontSize: PropTypes.string,
     color: PropTypes.string,
   }
 
   static defaultProps = {
-    size: 'medium',
+    fontSize: '13px',
+    color: 'black',
   }
 
-  @style({
-    self: {
-      display: 'inline-block',
-      fontFamily: '$font.family',
-    },
-    'size=xsmall': {
-      fontSize: '$font.size.xsmall',
-    },
-    'size=small': {
-      fontSize: '$font.size.small',
-    },
-    'size=medium': {
-      fontSize: '$font.size.medium',
-    },
-    'size=large': {
-      fontSize: '$font.size.large',
-    },
-    'size=xlarge': {
-      fontSize: '$font.size.xlarge',
-    },
-    'size=xxlarge': {
-      fontSize: '$font.size.xxlarge',
-    },
-    'color=gray500': {color: '$color.gray500'},
-    'color=blue100': {color: '$color.blue100'},
-    'color=blue200': {color: '$color.blue200'},
-  })
+  getStyle(props) {
+    const { fontSize, color } = props
+
+    return {
+      ...color && {color: color},
+      ...fontSize && {fontSize: fontSize},
+    }
+  }
+
+  getStyleClass(props) {
+    const { sheet } = props
+
+    return sheet.classes.txtAg
+  }
+
   render() {
-    const { children } = this.props
+    const { children, sheet, ...props } = this.props
 
     return (
-      <span>
+      <span style={this.getStyle(this.props)} classNames={this.getStyleClass(this.props)}>
         {children}
       </span>
     )
   }
 }
 
-export default Text
+export default useSheet(Text, componentStyles)

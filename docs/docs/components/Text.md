@@ -26,12 +26,12 @@ class FontFamilyExample extends Component {
         <div style={{ flexBasis: '150px', borderLeft: '1px solid #f2f2f2', paddingLeft: 20 }}>
           <div>
             <Text>
-              {font.family}
+              font.family
             </Text>
           </div>
           <div>
             <Text>
-              Weight: {font.weight}
+              Weight: font.weight
             </Text>
           </div>
         </div>
@@ -55,17 +55,17 @@ class FontSizeExample extends Component {
     return (
       <div style={{ padding: 20 }}>
         <div>
-          <Text size='xxlarge'>
+          <Text fontSize='22px'>
             Пример текста с размером XXLarge.
           </Text>
         </div>
         <div>
-          <Text size='xlarge'>
+          <Text fontSize='20px'>
             Пример текста с размером XLarge.
           </Text>
         </div>
         <div>
-          <Text size='large'>
+          <Text fontSize='18px'>
             Пример текста с размером Large.
           </Text>
         </div>
@@ -75,12 +75,12 @@ class FontSizeExample extends Component {
           </Text>
         </div>
         <div>
-          <Text size='small'>
+          <Text fontSize='12px'>
             Пример текста с размером Small.
           </Text>
         </div>
         <div>
-          <Text size='xsmall'>
+          <Text fontSize='11px'>
             Пример текста с размером XSmall.
           </Text>
         </div>
@@ -96,6 +96,13 @@ export default FontSizeExample
 
 *Properties*
 
-> **size** *String optional* По умолчанию: medium
+> **color** *String optional* По умолчанию: black
 > 
-> Задает размер текста, может принимать одно из **xsmall|small|medium|large|xlarge|xxlarge** значений.
+> Задает размер текста, может принимать различные CSS значения.
+> Например: color='black'; color='#F6F6F6'
+
+
+> **fontSize** *String optional* По умолчанию: 13px
+> 
+> Задает размер текста, состоит из цифровых значений и 'px' префикса.
+> Например: fontSize='11px'

@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
-import style from 'quantum'
 import TokenRenderer from 'scalex-ui/components/docs/TokenRenderer'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass, getStyle } from './Content.jss.js'
 
 class Content extends TokenRenderer {
   static propTypes = {
@@ -39,36 +41,25 @@ class Content extends TokenRenderer {
     return targetContext(requireName)
   }
 
-  @style({
-    self: {
-      padding: '10px 50px 25px 50px',
-    },
-  })
   renderChildren() {
     const { tokens } = this.props
 
     return (
-      <div>
+      <div className={getStyle()}>
         {this.renderTokens(tokens)}
       </div>
     )
   }
 
-  @style({
-    self: {
-      position: 'relative',
-      width: '100%',
-      height: '100%',
-      overflowY: 'auto',
-    },
-  })
   render() {
+    const {...props} = this.props
+
     return (
-      <div>
+      <div className={getStyleClass(props)}>
         {this.renderChildren()}
       </div>
     )
   }
 }
 
-export default Content
+export default useSheet(Content, componentStyles)

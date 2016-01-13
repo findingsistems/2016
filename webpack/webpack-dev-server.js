@@ -8,15 +8,15 @@ const compiler = webpack(devConfig)
 
 const serverOptions = {
   contentBase: config.staticFolder,
-  quiet: true,
-  noInfo: true,
+  quiet: false,
+  noInfo: false,
   hot: true,
   inline: true,
   lazy: false,
   historyApiFallback: true,
   publicPath: devConfig.output.publicPath,
   headers: {'Access-Control-Allow-Origin': '*'},
-  stats: {colors: true}
+  stats: {colors: true},
 }
 
 const app = new Express()

@@ -183,6 +183,7 @@ class Select extends Component {
       boxSizing: 'border-box',
     },
   })
+
   render() {
     const { subMenu, calculatedWidth, options } = this.props
     const { isShowDropDown, value, isShrink } = this.state

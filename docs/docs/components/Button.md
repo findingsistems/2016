@@ -20,6 +20,19 @@ class ButtonExample extends Component {
             Заблокированная
           </Button>
         </div>
+        <div style={{ margin: '20px' }}>
+          <Button parts roundLeft color="white">
+            Найти
+          </Button>
+          <Button repairs roundRight>
+            Найти
+          </Button>
+        </div>
+        <div style={{ margin: '20px' }}>
+          <Button catalog round fontSize="14px">
+            Показать телефон
+          </Button>
+        </div>
       </div>
     )
   }

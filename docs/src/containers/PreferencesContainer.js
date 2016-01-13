@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import style from 'quantum'
 import { connect } from 'react-redux'
 import * as PreferencesActions from './../actions/PreferencesActions'
 import Preferences from './../components/Preferences'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass } from './PreferencesContainer.jss.js'
 
 @connect(state => {
   return {
@@ -10,19 +12,11 @@ import Preferences from './../components/Preferences'
   }
 }, PreferencesActions)
 class PreferencesContainer extends Component {
-  @style({
-    self: {
-      position: 'fixed',
-      top: '0px',
-      right: '30px',
-      zIndex: '2',
-    },
-  })
   render() {
-    const { toggleEditor, preferences } = this.props
+    const { toggleEditor, preferences, ...props } = this.props
 
     return (
-      <div>
+      <div className = {getStyleClass(props)}>
         <Preferences
           {...preferences}
           onToggleEditor={toggleEditor} />
@@ -31,4 +25,4 @@ class PreferencesContainer extends Component {
   }
 }
 
-export default PreferencesContainer
+export default useSheet(PreferencesContainer, componentStyles)

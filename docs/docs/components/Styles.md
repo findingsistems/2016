@@ -5,7 +5,7 @@
 ```
 import React, { Component } from 'react'
 import Text from 'scalex-ui/components/text/Text'
-import { color } from 'scalex-ui/styles/index'
+import { Colors } from 'scalex-ui/styles/index'
 
 class ColorExample extends Component {
   getStyle() {
@@ -67,25 +67,25 @@ class StyleExample extends Component {
     return (
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <ColorPallette>
-          <ColorExample color={color.gray100} name='gray100' />
-          <ColorExample color={color.gray200} name='gray200' />
-          <ColorExample color={color.gray300} name='gray300' white />
-          <ColorExample color={color.gray400} name='gray400' white />
-          <ColorExample color={color.gray500} name='gray500' white />
-          <ColorExample color={color.gray600} name='gray600' white />
-          <ColorExample color={color.gray700} name='gray700' white />
-          <ColorExample color={color.gray800} name='gray800' white />
-          <ColorExample color={color.gray900} name='gray900' white />
+          <ColorExample color={Colors.gray100} name='gray100' />
+          <ColorExample color={Colors.gray200} name='gray200' />
+          <ColorExample color={Colors.gray300} name='gray300' white />
+          <ColorExample color={Colors.gray400} name='gray400' white />
+          <ColorExample color={Colors.gray500} name='gray500' white />
+          <ColorExample color={Colors.gray600} name='gray600' white />
+          <ColorExample color={Colors.gray700} name='gray700' white />
+          <ColorExample color={Colors.gray800} name='gray800' white />
+          <ColorExample color={Colors.gray900} name='gray900' white />
         </ColorPallette>
     
         <ColorPallette>
-          <ColorExample color={color.blue100} name='blue100' />
-          <ColorExample color={color.blue200} name='blue200' />
+          <ColorExample color={Colors.blue100} name='blue100' />
+          <ColorExample color={Colors.blue200} name='blue200' />
         </ColorPallette>
     
         <ColorPallette>
-          <ColorExample color={color.black} name='black' white />
-          <ColorExample color={color.white} name='white' />
+          <ColorExample color={Colors.black} name='black' white />
+          <ColorExample color={Colors.white} name='white' />
         </ColorPallette>
       </div>
     )

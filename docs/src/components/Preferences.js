@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import autobind from 'autobind-decorator'
-import style from 'quantum'
 import CodeIcon from 'scalex-ui/components/icons/CodeIcon'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass } from './Preferences.jss.js'
 
 @autobind
 class Preferences extends Component {
@@ -13,18 +15,6 @@ class Preferences extends Component {
     this.props.onToggleEditor && this.props.onToggleEditor()
   }
 
-  @style({
-    self: {
-      display: 'inline-block',
-      cursor: 'pointer',
-      padding: '5px',
-      boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.2)',
-      background: '#fff',
-      '&:hover': {
-        background: 'rgba(0, 0, 0, 0.02)',
-      },
-    },
-  })
   renderEditor() {
     return (
       <span onClick={this.onToggleEditor}>
@@ -37,11 +27,11 @@ class Preferences extends Component {
 
   render() {
     return (
-      <div>
+      <div className={getStyleClass(this.props)}>
         {this.renderEditor()}
       </div>
     )
   }
 }
 
-export default Preferences
+export default useSheet(Preferences, componentStyles)
