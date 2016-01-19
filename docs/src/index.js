@@ -1,7 +1,6 @@
 import 'babel/polyfill'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import style from 'quantum'
 import { Provider } from 'react-redux'
 import { ReduxRouter } from 'redux-react-router'
 import { Route } from 'react-router'

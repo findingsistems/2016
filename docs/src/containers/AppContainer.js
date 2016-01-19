@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import style from 'quantum'
 import autobind from 'autobind-decorator'
 import NavigationContainer from './NavigationContainer'
 import PreferencesContainer from './PreferencesContainer'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass, getContentContainerStyle } from './AppContainer.jss.js'
 
 @autobind
 class AppContainer extends Component {
@@ -10,36 +12,21 @@ class AppContainer extends Component {
     children: PropTypes.node,
   }
 
-  @style({
-    self: {
-      flexBasis: '80%',
-      height: '100%',
-    },
-  })
   renderContentContainer() {
+    const {...props} = this.props
+
     return (
-      <div>
+      <div className={getStyleClass({...props, isContainer: true})}>
         {this.props.children}
       </div>
     )
   }
 
-  @style({
-    self: {
-      display: 'flex',
-      position: 'absolute',
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px',
-      fontFamily: 'Roboto, sans-serif',
-      fontWeight: '300',
-      overflow: 'hidden',
-    },
-  })
   render() {
+    const {...props} = this.props
+
     return (
-      <div>
+      <div className={getStyleClass(props)}>
         <NavigationContainer />
         <PreferencesContainer />
         {this.renderContentContainer()}
@@ -48,4 +35,4 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer
+export default useSheet(AppContainer, componentStyles)

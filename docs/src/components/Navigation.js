@@ -1,8 +1,10 @@
 import React from 'react'
-import style from 'quantum'
 import { fromPairs } from 'ramda'
 import { Link } from 'react-router'
 import TokenRenderer from 'scalex-ui/components/docs/TokenRenderer'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass } from './Preferences.jss.js'
 
 class Navigation extends TokenRenderer {
   getLinkTarget(token) {
@@ -17,29 +19,15 @@ class Navigation extends TokenRenderer {
     )
   }
 
-  @style({
-    self: {
-      '& p': {
-        paddingLeft: '15px',
-      },
-      '& a': {
-        textDecoration: 'none',
-        lineHeight: '28px',
-        fontSize: '14px',
-        color: '#666',
-        '&:hover': {
-          color: '#f26b00',
-        },
-      },
-    },
-  })
   render() {
+    const props = this.props
+
     return (
-      <div>
+      <div className={getStyleClass(props)}>
         {this.renderTokens(this.props.tokens)}
       </div>
     )
   }
 }
 
-export default Navigation
+export default useSheet(Navigation, componentStyles)

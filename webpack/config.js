@@ -9,7 +9,6 @@ export default {
   staticFolder: path.join(root, 'docs'),
   index: path.join(root, 'docs/index.html'),
   theme: path.join(root, 'src/styles'),
-  port: 3030
+  jssStyle: path.join(root, 'src/styles/jss.js'),
+  port: 3030,
 }
-
-

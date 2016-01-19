@@ -1,6 +1,23 @@
 import React, { Component, PropTypes } from 'react'
-import styles from 'quantum'
+import cx from 'classnames'
+
+import { jss, useSheet } from 'jssStyle'
+
 import Text from './../text/Text'
+
+import * as autoGiperTheme from './../../styles/themes/ag'
+const { agTheme, partsTheme, repairsTheme, catalogTheme } = autoGiperTheme
+
+const componentStyles = {
+  btnAg: agTheme.button,
+  btnParts: partsTheme.button,
+  btnRepair: repairsTheme.button,
+  btnCatalog: catalogTheme.button,
+
+  modRound: agTheme.round,
+  modRoundLeft: agTheme.roundLeft,
+  modRoundRight: agTheme.roundRight,
+}
 
 class Button extends Component {
   static propTypes = {
@@ -15,42 +32,72 @@ class Button extends Component {
     disabled: false,
   }
 
-  getStyles() {
-    const { margin, style } = this.props
+  getStyleClass(props) {
+    const {
+      sheet: {
+        classes: {
+          btnAg,
+          btnParts,
+          btnRepair,
+          btnCatalog,
+          modRound,
+          modRoundLeft,
+          modRoundRight,
+        },
+      },
+      parts,
+      repairs,
+      catalog,
+      round,
+      roundLeft,
+      roundRight,
+    } = props
 
-    return {
-      ...style,
-      ...margin && {margin},
-    }
+    const styleNames = cx({
+      [btnAg]: (parts || repairs),
+      [btnParts]: parts,
+      [btnRepair]: repairs,
+      [btnCatalog]: catalog,
+      [modRound]: round,
+      [modRoundLeft]: roundLeft,
+      [modRoundRight]: roundRight,
+    })
+
+    return styleNames
   }
 
-  @styles({
-    self: {
-      padding: '5px 15px',
-      border: '1px solid $color.gray400',
-      background: '$color.white',
-      borderRadius: '1px',
-      cursor: 'pointer',
-      outline: 'none',
-      '&:hover': {
-        background: '$color.gray100',
-        boxShadow: 'inset 1px 1px 5px $color.gray400',
-      },
-      '&:disabled': {
-        opacity: '0.5',
-        boxShadow: 'none',
-        cursor: 'default',
-      },
-    },
-    'active': {
-      background: '$color.gray200',
-    },
-  })
+  getColorFromThemes(props) {
+    const { parts, repairs, catalog } = props
+
+    if (props.color) {
+      return props.color
+    }
+
+    if (parts) {
+      return partsTheme.button.color
+    }
+
+    if (repairs) {
+      return repairsTheme.button.color
+    }
+
+    if (catalog) {
+      return catalogTheme.button.color
+    }
+
+    return agTheme.button.color
+  }
+
   render() {
-    const { children, disabled, onClick } = this.props
+    const { children, disabled, onClick, ...props} = this.props
+
+    const color = this.getColorFromThemes(props)
+
+    const fontSize = props.fontSize || agTheme.button.fontSize
+
     return (
-      <button disabled={disabled} style={this.getStyles()} onClick={onClick}>
-        <Text size='small'>
+      <button disabled={disabled} className={this.getStyleClass(this.props)} onClick={onClick}>
+        <Text fontSize={fontSize} color={color}>
           {children}
         </Text>
       </button>
@@ -58,4 +105,4 @@ class Button extends Component {
   }
 }
 
-export default Button
+export default useSheet(Button, componentStyles)

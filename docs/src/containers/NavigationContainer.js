@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import style from 'quantum'
 import { connect } from 'react-redux'
 import * as DocsActions from './../actions/DocsActions'
 import Navigation from '../components/Navigation'
+
+import { jss, useSheet } from 'jssStyle'
+import componentStyles, { getStyleClass } from './NavigationContainer.jss.js'
 
 @connect(state => {
   return {
@@ -14,17 +16,9 @@ class NavigationContainer extends Component {
     this.props.load()
   }
 
-  @style({
-    self: {
-      overflowY: 'auto',
-      flexBasis: '20%',
-      paddingLeft: '20px',
-      borderRight: '1px solid rgba(0, 0, 0, 0.1)',
-    },
-  })
   render() {
     return (
-      <div>
+      <div className = {getStyleClass(this.props)}>
         <Navigation
           tokens={this.props.tokens} />
       </div>
@@ -32,4 +26,4 @@ class NavigationContainer extends Component {
   }
 }
 
-export default NavigationContainer
+export default useSheet(NavigationContainer, componentStyles)
